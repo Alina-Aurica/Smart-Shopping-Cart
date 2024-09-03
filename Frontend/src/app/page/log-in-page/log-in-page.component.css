@@ -1,0 +1,151 @@
+.grey-toolbar {
+  background-color: darkgreen;
+  color: white;
+}
+
+.custom-toolbar {
+  height: 30px;
+  margin: 0 auto;
+  background-color: orange;
+  color: white;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-icon {
+  color: white;
+  font-size: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.custom-icon {
+  margin-top: 5px;
+}
+
+.custom-menu {
+  background-color: darkgrey;
+  color: white;
+  margin-top: 5px;
+}
+
+.custom-button {
+  color: white !important;
+}
+
+
+.banner {
+  background-image: url("/assets/background-img.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 750px;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.banner > * {
+  position: relative;
+  z-index: 2;
+}
+
+.banner-content {
+  max-width: 1200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mb-sm-3 {
+  margin-top: 0.1rem !important;
+}
+
+.custom-button-style {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: darkgreen;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+.custom-button-style:hover {
+  background-color: darkgreen;
+}
+
+.form-control {
+  width: 120%;
+  padding: 0.45rem 0.45rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+.custom-validator {
+  color: white;
+  font-size: small;
+  min-height: 20px;
+}
+
+.custom-text {
+  font-size: medium;
+  font-style: italic;
+}
+
+.block-field {
+  min-height: 20px;
+  display: block;
+}
+
+.footer {
+  background-color: orange;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+}
+
+.container-fluid {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+

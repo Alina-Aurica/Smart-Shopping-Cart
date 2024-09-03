@@ -1,0 +1,87 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="example-spacer"></span>
+  <div *ngIf="logOutVisible; else authVisible">
+    <mat-icon class="example-icon">account_circle</mat-icon>
+    <a style="color:white" mat-button (click)="logOut()">LogOut</a>
+  </div>
+  <ng-template #authVisible>
+    <mat-icon class="example-icon">account_circle</mat-icon>
+    <a style="color:white" mat-button routerLink="/logInPage">LogIn</a>
+    <mat-icon class="example-icon">perm_identity</mat-icon>
+    <a style="color:white" mat-button routerLink="/registerPage">Register</a>
+  </ng-template>
+</mat-toolbar>
+
+<mat-toolbar class="grey-toolbar">
+  <span style="font-size: x-large; font-family: 'Comic Sans MS', serif">SmartShopper</span>
+  <span class="example-spacer"></span>
+
+  <div class="card-header">
+    <form (ngSubmit)="searchProduct()">
+      <div class=".mb-sm-3">
+        <input class="custom-search-bar" type="text" [(ngModel)]="productName" id="name" name="name" placeholder=" Search product...">
+        <button type="button" class="btn btn-primary" (click)="searchProduct()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <a mat-button class="custom-button" routerLink="/homePage">Home</a>
+  <a mat-button class="custom-button" routerLink="/productsPage">Products</a>
+  <div *ngIf="adminVisible">
+    <a mat-button class="custom-button" routerLink="/adminPage">Admin Page</a>
+  </div>
+  <div *ngIf="clientVisible">
+    <a mat-button class="custom-button" routerLink="/shoppingListPage">Shopping List</a>
+  </div>
+</mat-toolbar>
+
+<h2>Products</h2>
+<div *ngIf="clientVisible">
+  <p class="text-paragraph">After you finish your shopping list, go to <a mat-button class="custom-button-green" routerLink="/shoppingListPage"> shopping list section </a> !</p>
+</div>
+<div class="card-body">
+  <div *ngFor="let product of products">
+    <div class="card">
+      <img class="card-img-top" [src]="product.image_url" alt="Product Image">
+      <div class="text-body">
+        <p class="card-text dest-color" style="font-weight: bold;">{{ product.name }}</p>
+        <p class="card-text address-color">{{ product.quantity_mean }} g/ml</p>
+        <div *ngIf="clientVisible">
+          <div style="color: darkgreen" class="mb-sm-3">
+            <label for="numberOfProducts">Number of Products </label>
+            <select class="select-style"  id="numberOfProducts"
+                    required
+                    [(ngModel)]="product.number_of_products" name="numberOfProducts">
+              <option *ngFor="let number of product.interval" [value]="number">{{number}}</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-secondary" (click)="addProductInShoppingList(product.id, product.name, product.number_of_products)">Add Product In Shopping List</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="container-fluid">
+    <h2>Contact Info</h2>
+    <div>
+      <mat-icon class="example-icon">home</mat-icon>
+      <a style="color:white">Observator Street, No 34, Cluj-Napoca, Cluj, Romania</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">email</mat-icon>
+      <a style="color:white">support&#64;smartShopper.ro</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">phone</mat-icon>
+      <a style="color:white">+40237 231 552</a>
+    </div>
+    <div style="margin-top: 15px">
+      © SmartShopper
+    </div>
+  </div>
+</div>

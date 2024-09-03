@@ -1,0 +1,83 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="example-spacer"></span>
+  <div *ngIf="logOutVisible; else authVisible">
+    <mat-icon class="example-icon">account_circle</mat-icon>
+    <a style="color:white" mat-button (click)="logOut()">LogOut</a>
+  </div>
+  <ng-template #authVisible>
+    <mat-icon class="example-icon">account_circle</mat-icon>
+    <a style="color:white" mat-button routerLink="/logInPage">LogIn</a>
+    <mat-icon class="example-icon">perm_identity</mat-icon>
+    <a style="color:white" mat-button routerLink="/registerPage">Register</a>
+  </ng-template>
+</mat-toolbar>
+
+<mat-toolbar class="grey-toolbar">
+  <span style="font-size: x-large; font-family: 'Comic Sans MS', serif">SmartShopper</span>
+  <span class="example-spacer"></span>
+
+  <a mat-button class="custom-button" routerLink="/homePage">Home</a>
+  <a mat-button class="custom-button" routerLink="/productsPage">Products</a>
+  <a mat-button class="custom-button" routerLink="/shoppingListPage">Shopping List</a>
+</mat-toolbar>
+
+<div class="banner">
+  <div class="banner-content">
+    <h2>Shopping List</h2>
+    <div>
+      <button class="btn btn-secondary" (click)="scanProduct()">Scan Product Now</button>
+    </div>
+    <table>
+      <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Number Of Products</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let shoppingListAux of shoppingLists">
+        <ng-container *ngIf="shoppingListAux.recognised && shoppingListAux.number_of_products == 0; else unrecognizedView">
+          <td>
+            <div class="recognized-cut">{{shoppingListAux.name_product}}</div>
+          </td>
+          <td>
+            <div class="recognized-cut">{{shoppingListAux.number_of_products}}</div>
+          </td>
+          <td></td>
+        </ng-container>
+        <ng-template #unrecognizedView>
+          <td>{{shoppingListAux.name_product}}</td>
+          <td>{{shoppingListAux.number_of_products}}</td>
+          <td><button class="btn btn-secondary" (click)="deleteProductFromShoppingList(shoppingListAux.id)">Delete Product From Shopping List</button></td>
+        </ng-template>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container-fluid">
+    <h2>Contact Info</h2>
+    <div>
+      <mat-icon class="example-icon">home</mat-icon>
+      <a style="color:white">Observator Street, No 34, Cluj-Napoca, Cluj, Romania</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">email</mat-icon>
+      <a style="color:white">support&#64;smartShopper.ro</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">phone</mat-icon>
+      <a style="color:white">+40237 231 552</a>
+    </div>
+    <div style="margin-top: 15px">
+      © SmartShopper
+    </div>
+  </div>
+</div>
+
+
+
+

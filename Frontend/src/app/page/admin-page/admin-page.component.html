@@ -1,0 +1,102 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="example-spacer"></span>
+  <div *ngIf="logOutVisible; else authVisible">
+    <mat-icon class="example-icon">account_circle</mat-icon>
+    <a style="color:white" mat-button (click)="logOut()">LogOut</a>
+  </div>
+  <ng-template #authVisible>
+    <mat-icon class="example-icon">account_circle</mat-icon>
+    <a style="color:white" mat-button routerLink="/logInPage">LogIn</a>
+    <mat-icon class="example-icon">perm_identity</mat-icon>
+    <a style="color:white" mat-button routerLink="/registerPage">Register</a>
+  </ng-template>
+</mat-toolbar>
+
+<mat-toolbar class="grey-toolbar">
+  <span style="font-size: x-large; font-family: 'Comic Sans MS', serif">SmartShopper</span>
+  <span class="example-spacer"></span>
+
+  <a mat-button class="custom-button" routerLink="/homePage">Home</a>
+  <a mat-button class="custom-button" routerLink="/productsPage">Products</a>
+  <a mat-button class="custom-button" routerLink="/adminPage">Admin Page</a>
+</mat-toolbar>
+
+<div class="banner">
+  <div class="banner-content">
+    <h2>Products</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Quantity Min</th>
+        <th>Quantity Max</th>
+        <th>Stock</th>
+        <th>Image</th>
+        <th>Options</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td></td>
+        <td><input type="text" [(ngModel)]="product.name"></td>
+        <td><input type="text" [(ngModel)]="product.quantity_min"></td>
+        <td><input type="text" [(ngModel)]="product.quantity_max"></td>
+        <td><input type="text" [(ngModel)]="product.stock"></td>
+        <td><input type="text" [(ngModel)]="product.image_url"></td>
+        <td><button class="btn btn-secondary" (click)="addProduct()">Add Product</button></td>
+      </tr>
+      <tr *ngFor="let productAux of products">
+        <ng-container *ngIf="productAux.editable; else viewMode">
+          <td>{{productAux.id}}</td>
+          <td><input type="text" [(ngModel)]="productAux.name"></td>
+          <td><input type="text" [(ngModel)]="productAux.quantity_min"></td>
+          <td><input type="text" [(ngModel)]="productAux.quantity_max"></td>
+          <td><input type="text" [(ngModel)]="productAux.stock"></td>
+          <td><input type="text" [(ngModel)]="productAux.image_url"></td>
+          <td>
+            <button class="btn btn-secondary" (click)="updateProduct(productAux)">Update Product</button>
+          </td>
+        </ng-container>
+        <ng-template #viewMode>
+          <td>{{productAux.id}}</td>
+          <td>{{productAux.name}}</td>
+          <td>{{productAux.quantity_min}}</td>
+          <td>{{productAux.quantity_max}}</td>
+          <td>{{productAux.stock}}</td>
+          <td><img class="card-img-top" [src]="productAux.image_url" alt="Product Image"></td>
+          <td>
+            <button class="btn btn-secondary" (click)="setEditable(productAux)">Activate Edit Mode</button>
+            <button class="btn btn-secondary" (click)="deleteProduct(productAux.id)">Delete Product</button>
+          </td>
+        </ng-template>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container-fluid">
+    <h2>Contact Info</h2>
+    <div>
+      <mat-icon class="example-icon">home</mat-icon>
+      <a style="color:white">Observator Street, No 34, Cluj-Napoca, Cluj, Romania</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">email</mat-icon>
+      <a style="color:white">support&#64;smartShopper.ro</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">phone</mat-icon>
+      <a style="color:white">+40237 231 552</a>
+    </div>
+    <div style="margin-top: 15px">
+      © SmartShopper
+    </div>
+  </div>
+</div>
+
+
+
+

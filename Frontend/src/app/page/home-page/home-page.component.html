@@ -1,0 +1,84 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="example-spacer"></span>
+  <div *ngIf="logOutVisible; else authVisible">
+    <mat-icon class="example-icon">account_circle</mat-icon>
+    <a style="color:white" mat-button (click)="logOut()">LogOut</a>
+  </div>
+  <ng-template #authVisible>
+    <mat-icon class="example-icon">account_circle</mat-icon>
+    <a style="color:white" mat-button routerLink="/logInPage">LogIn</a>
+    <mat-icon class="example-icon">perm_identity</mat-icon>
+    <a style="color:white" mat-button routerLink="/registerPage">Register</a>
+  </ng-template>
+</mat-toolbar>
+
+<mat-toolbar class="grey-toolbar">
+  <span style="font-size: x-large; font-family: 'Comic Sans MS', serif">SmartShopper</span>
+  <span class="example-spacer"></span>
+
+  <a mat-button class="custom-button" routerLink="/homePage">Home</a>
+  <a mat-button class="custom-button" routerLink="/productsPage">Products</a>
+  <div *ngIf="adminVisible">
+    <a mat-button class="custom-button" routerLink="/adminPage">Admin Page</a>
+  </div>
+  <div *ngIf="clientVisible">
+    <a mat-button class="custom-button" routerLink="/shoppingListPage">Shopping List</a>
+  </div>
+</mat-toolbar>
+
+<div>
+  <div class="banner">
+    <div class="banner-content">
+      <h1 class="custom-banner-text1">SMART SHOPPING</h1>
+      <h1 class="custom-banner-text2">Let's Shop Together!</h1>
+      <a href="homePage/#aboutUs" class="about-us-button">About Us</a>
+    </div>
+  </div>
+  <div id="aboutUs" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 style="color: orange">ABOUT US</h2>
+        <h1>Welcome to SmartShopper</h1>
+        <p>SmartShopper - the ultimate shopping companion app designed to streamline your grocery and essentials purchasing experience. Using SmartShopper, you'll enter a user-friendly interface where your shopping efficiency is our top priority.</p>
+        <p>SmartShopper is not just an app! It's your reliable shopping assistant designed to make your shopping experience as smooth and efficient as possible. Say goodbye to forgotten items and hello to a more organized, cost-effective shopping journey.</p>
+        <div class="about-lists">
+          <div class="list-column">
+            <ul>
+              <li>Friendly shopping lists</li>
+              <li>Automatic deletion of items from the shopping list</li>
+              <li>Eco-friendly app</li>
+            </ul>
+          </div>
+          <div class="list-column">
+            <ul>
+              <li>Happier personal budget</li>
+              <li>Many grocery products</li>
+              <li>Best alternative for this shopping world</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container-fluid">
+    <h2>Contact Info</h2>
+    <div>
+      <mat-icon class="example-icon">home</mat-icon>
+      <a style="color:white">Observator Street, No 34, Cluj-Napoca, Cluj, Romania</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">email</mat-icon>
+      <a style="color:white">support&#64;smartShopper.ro</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">phone</mat-icon>
+      <a style="color:white">+40237 231 552</a>
+    </div>
+    <div style="margin-top: 15px">
+      © SmartShopper
+    </div>
+  </div>
+</div>

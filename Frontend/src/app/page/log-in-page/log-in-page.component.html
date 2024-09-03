@@ -1,0 +1,58 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="example-spacer"></span>
+  <mat-icon class="example-icon">perm_identity</mat-icon>
+  <a style="color:white" mat-button routerLink="/registerPage">Register</a>
+</mat-toolbar>
+
+<mat-toolbar class="grey-toolbar">
+  <span style="font-size: x-large; font-family: 'Comic Sans MS', serif">SmartShopper</span>
+  <span class="example-spacer"></span>
+
+  <a mat-button class="custom-button" routerLink="/homePage">Home</a>
+  <a mat-button class="custom-button" routerLink="/productsPage">Products</a>
+</mat-toolbar>
+
+
+<div>
+  <div class="banner">
+    <div class="banner-content">
+      <h1>Log In Here</h1>
+      <div>
+        <form class="contact-form" (ngSubmit)="logIn()">
+          <input class="form-control mb-sm-3" type="email" placeholder="Your Email" [(ngModel)]="user.email" name="email" [email]="true" #prmEmail="ngModel" required>
+          <div class="block-field">
+            <a class="custom-validator" *ngIf="prmEmail.errors?.['email']">Email address is not valid.</a>
+            <a class="custom-validator" *ngIf="prmEmail.errors?.['required']">Email address field is empty.</a>
+          </div>
+          <input class="form-control mb-sm-3" type="password" placeholder="Your Password" [(ngModel)]="user.password" name="password" #nullPassword="ngModel" required minlength="8">
+          <div class="block-field">
+            <a class="custom-validator" *ngIf="nullPassword.errors?.['required']">Password field is empty.</a>
+            <a class="custom-validator" *ngIf="nullPassword.errors?.['minlength']">Password must be at least 8 characters..</a>
+          </div>
+        </form>
+        <button type="button" class="custom-button-style" (click)="logIn()">LogIn</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container-fluid">
+    <h2>Contact Info</h2>
+    <div>
+      <mat-icon class="example-icon">home</mat-icon>
+      <a style="color:white">Observator Street, No 34, Cluj-Napoca, Cluj, Romania</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">email</mat-icon>
+      <a style="color:white">support&#64;smartShopper.ro</a>
+    </div>
+    <div>
+      <mat-icon class="example-icon">phone</mat-icon>
+      <a style="color:white">+40237 231 552</a>
+    </div>
+    <div style="margin-top: 15px">
+      © SmartShopper
+    </div>
+  </div>
+</div>
